@@ -14,6 +14,12 @@
 
 - 包格式兼容大致兼容 [mqtt-packet](https://github.com/mqttjs/mqtt-packet)
 
+## 安装
+```
+npm install mqttpack
+# or
+yarn add mqttpack
+```
 ## 包格式
 ```typescript
 type TypePacket3 = {
