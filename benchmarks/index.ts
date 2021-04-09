@@ -1,4 +1,4 @@
-import * as mqtt from 'mqtt-packet'
+import mqtt from 'mqtt-packet'
 import { Decode, Decode3 } from '../src/decode'
 import { Encode, Encode3 } from '../src/encode'
 import { netTime, time } from './util'

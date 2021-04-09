@@ -11,9 +11,10 @@ export default [
       sourcemap: true,
     },
     plugins: [
-      typescript(),
+      typescript({ module: 'esnext' }),
       nodePolyfills({
-        include: null
+        include: "./src/*",
+        exclude: /global\.js/
       }),
       terser()
     ]
@@ -27,9 +28,9 @@ export default [
       sourcemap: true,
     },
     plugins: [
-      typescript(),
+      typescript({ module: 'esnext' }),
       nodePolyfills({
-        include: null
+        include: "./src/*"
       }),
       terser()
     ]
