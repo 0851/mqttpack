@@ -11,7 +11,7 @@
     "test:nyc": "TS_NODE_FILES=true nyc mocha **/*.spec.ts",
     "test:mocha": "TS_NODE_FILES=true mocha --require ts-node/register --require source-map-support/register --recursive **/*.spec.ts",
     "ben": "TS_NODE_FILES=true ts-node benchmarks/index.ts",
-    "release": "npm run build && git add . && git commit -am 'feat: --other=build' && git push && npm run release-patch",
+    "release": "npm run build && npm run release-patch",
     "prelease": "npm version prerelease && git push --tags --force && git push && npm publish --access public",
     "release-patch": "npm version patch && git push --tags && git push && npm publish --access public",
     "release-minor": "npm version minor && git push --tags && git push && npm publish --access public",
