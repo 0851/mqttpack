@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ControlTypesList, encodeFlag, decodeFlag } from './constants';
+import { ControlTypesList, encodeFlag, decodeFlag } from '../src/constants';
 describe('constants', () => {
   it('flag', () => {
     ControlTypesList.forEach((k) => {

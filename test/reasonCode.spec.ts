@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { FindReasonCodeName, FindReasonCode } from './reasonCode';
+import { FindReasonCodeName, FindReasonCode } from '../src/reasonCode';
 describe('reasonCode', () => {
   it('FindReasonCodeName', () => {
     expect(FindReasonCodeName('suback', 0x8F)).to.eq('topicFilterInvalid')

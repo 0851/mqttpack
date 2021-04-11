@@ -119,7 +119,13 @@ export function FindReasonCodeName (cmd: MqttPacket.TypeControlTypes, code: numb
   if (!codes) {
     throw new Error(`${cmd} reasonCode not support`)
   }
-  let find: MqttPacket.TypeReasonCode | undefined = codes.find(item => item.code === code)
+  let find: MqttPacket.TypeReasonCode | undefined = undefined
+  for (let index = 0; index < codes.length; index++) {
+    const element = codes[index];
+    if (element.code === code) {
+      find = element
+    }
+  }
   if (find === undefined) {
     throw new Error(`${cmd} reasonCode ${code} not support`)
   }
@@ -130,7 +136,13 @@ export function FindReasonCode (cmd: MqttPacket.TypeControlTypes, name: string):
   if (!codes) {
     throw new Error(`${cmd} reasonName not support`)
   }
-  let find = codes.find(item => item.name === name)
+  let find: MqttPacket.TypeReasonCode | undefined = undefined
+  for (let index = 0; index < codes.length; index++) {
+    const element = codes[index];
+    if (element.name === name) {
+      find = element
+    }
+  }
   if (find === undefined) {
     throw new Error(`${cmd} reasonName ${name} not support`)
   }

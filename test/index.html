@@ -8,7 +8,7 @@
   <title>Document</title>
   <script src="../dist/browser.min.js"></script>
   <script>
-    console.log(mqttpacket.Encode({
+    var hex = mqttpack.Encode({
       cmd: 'publish',
       qos: 1,
       messageId: 1020,
@@ -16,7 +16,9 @@
       retain: false,
       topic: 'testtesttest',
       payload: 'testtesttesttesttest'
-    }).toString('hex'))
+    })
+    console.log(hex.toString('hex'))
+    console.log(mqttpack.Decode(hex))
   </script>
 </head>
 

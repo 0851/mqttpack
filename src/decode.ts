@@ -51,7 +51,7 @@ function genFixedHeader<V extends MqttPacket.TypeVersion,
 function genProperties<V extends MqttPacket.TypeVersion>
   (d: DecodeMethod, cmd: MqttPacket.TypeControlTypes | MqttPacket.TypeControlTypes3, v: V):
   MqttPacket.TypeProperties | undefined {
-  if (v === 3 || !HasProperties.includes(cmd)) {
+  if (v === 3 || HasProperties.indexOf(cmd) < 0) {
     return
   }
   let length = d.readVarInt()
@@ -137,12 +137,6 @@ function genPayload<V extends MqttPacket.TypeVersion> (
 ): MqttPacket.TypePayload | undefined {
   let one = d.peek()
   let cmd = header.cmd
-  // if (v === 3 && HasPayloadCMD3.includes(cmd as MqttPacket.TypeControlTypes3) && one === undefined) {
-  //   throw new Error(`payload must be set`)
-  // }
-  // if (v === 5 && HasPayloadCMD.includes(cmd as MqttPacket.TypeControlTypes) && one === undefined) {
-  //   throw new Error(`payload must be set`)
-  // }
   if (one === undefined) {
     return
   }
@@ -273,7 +267,7 @@ function genVariableHeader<V extends MqttPacket.TypeVersion>
     }
     return variableHeader
   }
-  if (['puback', 'pubrec', 'pubrel', 'pubcomp'].includes(cmd)) {
+  if (['puback', 'pubrec', 'pubrel', 'pubcomp'].indexOf(cmd) >= 0) {
     variableHeader.messageId = d.readUInt16BE()
     if (v === 5) {
       let code = d.readForce()
@@ -282,11 +276,11 @@ function genVariableHeader<V extends MqttPacket.TypeVersion>
     }
     return variableHeader
   }
-  if (['subscribe', 'suback', 'unsubscribe', 'unsuback'].includes(cmd)) {
+  if (['subscribe', 'suback', 'unsubscribe', 'unsuback'].indexOf(cmd) >= 0) {
     variableHeader.messageId = d.readUInt16BE()
     return variableHeader
   }
-  if (['disconnect', 'auth'].includes(cmd) && v === 5) {
+  if (['disconnect', 'auth'].indexOf(cmd) >= 0 && v === 5) {
     let code = d.readForce()
     variableHeader.reasonCode = code
     variableHeader.returnCode = code

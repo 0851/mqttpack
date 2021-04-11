@@ -28,7 +28,8 @@
     "index.ts",
     "types.d.ts",
     "src/**/*.ts",
-    "benchmarks"
+    "benchmarks",
+    "test/**/*.ts",
   ],
   "exclude": [
     "node_modules",

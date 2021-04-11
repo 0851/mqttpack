@@ -3,7 +3,7 @@ import {
   getHight,
   DecodeMethod,
   getLow, getOffset, validBit, EncodeMethod, validUtf8
-} from './util'
+} from '../src/util'
 import { expect } from 'chai';
 
 

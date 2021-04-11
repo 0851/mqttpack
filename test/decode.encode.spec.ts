@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import mqtt from 'mqtt-packet'
-import { Encode, Encode3 } from './encode';
-import { Decode, Decode3 } from './decode';
+import { Encode, Encode3 } from '../src/encode';
+import { Decode, Decode3 } from '../src/decode';
 const parser = mqtt.parser()
 
 export const testPacket = {
@@ -597,6 +597,18 @@ const specialTestPacket = {
   },
 }
 describe('encode', () => {
+
+  it('encode decode', () => {
+    Decode(Buffer.from(Encode({
+      cmd: 'publish',
+      qos: 1,
+      messageId: 1020,
+      dup: false,
+      retain: false,
+      topic: 'testtesttest',
+      payload: 'testtesttesttesttest'
+    })))
+  });
   [
     'connect',
     'connect2',

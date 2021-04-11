@@ -1,8 +1,7 @@
 # MQTT 封包解包
 - 无依赖
 - ie10+ ,chrome, firefox ...
-- node
-- deno
+- node v4.0.0 以上
 - MQTT3.1.1
 - MQTT5
 - TypeScript
@@ -13,6 +12,19 @@
    - [MQTT Version 3.1.1](http://mqtt.p2hp.com/mqtt311)
 
 - 包格式兼容大致兼容 [mqtt-packet](https://github.com/mqttjs/mqtt-packet)
+
+## 构建包说明
+```
+dist
+├── browser.min.js # 浏览器使用
+├── browser.min.js.map
+├── node.v4.min.js # node v4-v5使用
+├── node.v4.min.js.map
+├── node.v6.min.js # node v6 以上使用
+├── node.v6.min.js.map
+├── reasoncode.min.js  # 错误码, 可不使用 
+└── reasoncode.min.js.map
+```
 
 ## 安装
 ```

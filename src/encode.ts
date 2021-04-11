@@ -93,7 +93,7 @@ function encodeVariableHeader (e: EncodeMethod,
       e.writeUInt16BE(packet.messageId)
     }
   }
-  if (['puback', 'pubrec', 'pubrel', 'pubcomp'].includes(cmd)) {
+  if (['puback', 'pubrec', 'pubrel', 'pubcomp'].indexOf(cmd) >= 0) {
     if (packet.messageId === undefined) {
       throw new Error('must be set messageId')
     }
@@ -102,13 +102,13 @@ function encodeVariableHeader (e: EncodeMethod,
       e.writeByte(packet.returnCode || packet.reasonCode || 0)
     }
   }
-  if (['subscribe', 'suback', 'unsubscribe', 'unsuback'].includes(cmd)) {
+  if (['subscribe', 'suback', 'unsubscribe', 'unsuback'].indexOf(cmd) >= 0) {
     if (packet.messageId === undefined) {
       throw new Error('must be set messageId')
     }
     e.writeUInt16BE(packet.messageId)
   }
-  if (['disconnect', 'auth'].includes(cmd) && v === 5) {
+  if (['disconnect', 'auth'].indexOf(cmd) >= 0 && v === 5) {
     e.writeByte(packet.returnCode || packet.reasonCode || 0)
   }
 }
@@ -147,7 +147,7 @@ function encodeProperties (e: EncodeMethod,
   packet: MqttPacket.TypePacket | MqttPacket.TypePacket3,
   properties: MqttPacket.TypeProperties | undefined,
   v: MqttPacket.TypeVersion) {
-  if (v === 3 || !HasProperties.includes(packet.cmd)) {
+  if (v === 3 || HasProperties.indexOf(packet.cmd) < 0) {
     return
   }
   if (properties === undefined) {
