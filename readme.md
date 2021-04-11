@@ -32,6 +32,21 @@ npm install mqttpack
 # or
 yarn add mqttpack
 ```
+
+``` 使用
+// 详细可查看 test 目录
+var hex = mqttpack.Encode({
+      cmd: 'publish',
+      qos: 1,
+      messageId: 1020,
+      dup: false,
+      retain: false,
+      topic: 'testtesttest',
+      payload: 'testtesttesttesttest'
+    })
+    console.log(hex.toString('hex'))
+    console.log(mqttpack.Decode(hex))
+```
 ## 包格式
 ```typescript
 type TypePacket3 = {
