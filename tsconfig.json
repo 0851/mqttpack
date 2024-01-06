@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "outDir": "dist",
+    "strict": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "scripthost",
+      "es2018"
+    ]
+  },
+  "include": [
+    "index.ts",
+    "types.d.ts",
+    "src/**/*.ts",
+    "benchmarks",
+    "test/**/*.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "coverage"
+  ]
+}
